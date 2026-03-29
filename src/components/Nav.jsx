@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+
 const Nav = ({ setSearchData }) => {
   async function fetchMovies(query) {
     const { data } = await axios.get(
-      `https://www.omdbapi.com/?s=${query}&apikey=${import.meta.env.VITE_OMDB_API_KEY}`,
+      `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`,
     );
 
     setSearchData({
