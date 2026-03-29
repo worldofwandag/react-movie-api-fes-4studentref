@@ -4,7 +4,7 @@ import axios from "axios";
 const Nav = ({ setSearchData }) => {
   async function fetchMovies(query) {
     const { data } = await axios.get(
-      `https://www.omdbapi.com/?s=${query}&apikey=e11ddac9`,
+      `https://www.omdbapi.com/?s=${query}&apikey=${import.meta.env.VITE_OMDB_API_KEY}`,
     );
 
     setSearchData({
@@ -18,7 +18,7 @@ const Nav = ({ setSearchData }) => {
     fetchMovies(query);
   }
 
-  useEffect(() => {
+  useEffect(() => { //to use Marvel search term on mount
     fetchMovies("Marvel");
   }, []);
 
