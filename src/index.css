@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  background: #333;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-form {
+  display: flex;
+  gap: 8px;
+}
+
+.search-form__input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.search-form__button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+main {
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-container label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sort-container select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sort-container select:hover {
+  border-color: #999;
+}
+
+.sort-container select:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.movie-card {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.movie-card__img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.movie-card__title {
+  font-size: 16px;
+  margin: 10px 0 5px 0;
+}
+
+.movie-card__year {
+  margin: 0;
+  color: #666;
+}
+
+/* Placeholder for broken images */
+.movie-card__poster-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: #999;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* Skeleton Loading */
+.movie-card--skeleton {
+  background: #e0e0e0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.movie-card__img--skeleton {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.movie-card__title--skeleton {
+  height: 20px;
+  background: #e0e0e0;
+  margin: 10px 0 5px 0;
+  width: 80%;
+}
+
+.movie-card__year--skeleton {
+  height: 16px;
+  background: #e0e0e0;
+  width: 40%;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
