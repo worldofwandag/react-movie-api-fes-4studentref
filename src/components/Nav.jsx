@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 const Nav = ({ setSearchData, setLoading }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   async function handleSubmit(formData) {
     const query = formData.get("searchInput");
     fetchMovies(query);
+    if (location.pathname !== "/") { //this is for when doing a search from somewhere other than the homepage
+      navigate("/");
+    }
   }
 
   async function fetchMovies(query) {
