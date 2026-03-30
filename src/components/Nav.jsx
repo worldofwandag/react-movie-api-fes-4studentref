@@ -3,24 +3,31 @@ import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
-const Nav = ({ setSearchData }) => {
-  async function fetchMovies(query) {
-    const { data } = await axios.get(
-      `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`,
-    );
-
-    setSearchData({
-      results: data.Search || [],
-      query: query,
-    });
-  }
-
+const Nav = ({ setSearchData, setLoading }) => {
   async function handleSubmit(formData) {
     const query = formData.get("searchInput");
     fetchMovies(query);
   }
 
-  useEffect(() => { //to use Marvel search term on mount
+  async function fetchMovies(query) {
+    setLoading(true);
+    const { data } = await axios.get(
+      `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`,
+    );
+
+    setSearchData({
+      results: data.Search || [], //empty array needed in case no movies found
+      query: query,
+    });
+    
+    // Simulate 1 second delay to show skeleton loading state
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }
+
+  useEffect(() => {
+    //will load Marvel movies on mount by passing Marvel through fetchMovies
     fetchMovies("Marvel");
   }, []);
 

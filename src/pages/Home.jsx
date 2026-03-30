@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "../components/ui/MovieCard";
 
-const Home = ({ searchData }) => {
+const Home = ({ searchData, loading }) => {
   const [sortOption, setSortOption] = useState("default");
   const [sortedMovies, setSortedMovies] = useState([]);
 
@@ -22,9 +22,11 @@ const Home = ({ searchData }) => {
   }
 
   useEffect(() => {
-    const filtered = sortMovies(searchData.results, sortOption);
-    setSortedMovies(filtered);
+    const currentMovies = sortMovies(searchData.results, sortOption);
+    setSortedMovies(currentMovies);
   }, [searchData.results, sortOption]);
+  //putting sortOption in the dependency array will make it run everytime you choose a new sorting option.
+  //searchData.results in the dependancy array will make it run everytime you search for new movies.
 
   return (
     <div className="main">
@@ -53,9 +55,15 @@ const Home = ({ searchData }) => {
       </div>
 
       <div className="movies-grid" id="moviesGrid">
-        {sortedMovies.map((movie) => (
-          <MovieCard key={movie.imdbID} movie={movie} />
-        ))}
+        {loading ? (
+          Array(10).fill(0).map((_, index) => (
+            <MovieCard key={index} skeleton={true} />
+          ))
+        ) : (
+          sortedMovies.map((movie) => (
+            <MovieCard key={movie.imdbID} movie={movie} />
+          ))
+        )}
       </div>
     </div>
   );
