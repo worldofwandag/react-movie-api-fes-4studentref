@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../assets/fes-logo.png";
 
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
@@ -39,8 +40,13 @@ const Nav = ({ setSearchData, setLoading }) => {
   }, []);
 
   return (
-    <div className="nav">
-      <div className="logo">FES Movies</div>
+    <nav className="nav">
+      <div className="logo">
+        <img src={logo} alt="" className="logo__img" />
+        <div className="logo__title">
+          <span>FES</span> Movies
+        </div>
+      </div>
 
       <form
         action={handleSubmit}
@@ -48,18 +54,37 @@ const Nav = ({ setSearchData, setLoading }) => {
         id="searchForm"
         name="searchForm"
       >
-        <label htmlFor="searchInput"></label>
-        <input
-          className="search-form__input"
-          type="text"
-          name="searchInput" //for formData
-          id="searchInput"
-          placeholder="Search movies..."
-          required
-        />
-        <button className="search-form__button">Search</button>
+        <div className="search-form__group">
+          <label htmlFor="searchInput"></label>
+          <input
+            className="search-form__input"
+            type="text"
+            name="searchInput" //for formData
+            id="searchInput"
+            placeholder="Search movies..."
+            required
+          />
+          <button
+            className="search-form__button"
+            type="submit"
+            aria-label="Search"
+          >
+            <svg
+              className="search-form__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
       </form>
-    </div>
+    </nav>
   );
 };
 

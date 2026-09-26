@@ -31,7 +31,7 @@ const Home = ({ searchData, loading }) => {
   return (
     <div className="main">
       <div className="controls">
-        <p id="resultsInfo">
+        <p id="resultsInfo" className="resultsInfo">
           {searchData.results.length > 0 
             ? `Showing: ${searchData.query}` 
             : searchData.query 
