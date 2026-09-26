@@ -364,7 +364,7 @@ footer {
 .movie-details__released {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: #444;
 }
 
 .movie-details__text--wrapper {
@@ -392,7 +392,7 @@ footer {
 .movie-details__detail p {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: #444;
   line-height: 1.6;
 }
 
