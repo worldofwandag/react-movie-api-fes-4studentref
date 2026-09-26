@@ -291,6 +291,10 @@ footer {
 .movie-details__container {
   max-width: 1200px;
   margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 20px rgb(0, 0,0, 0.1);
 }
 
 .movie-details__back {

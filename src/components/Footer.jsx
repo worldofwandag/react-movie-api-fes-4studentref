@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <p>Created by FES mentor Wandag. Powered by OMDBapi.</p>
+      <p>Created by Simplified. Powered by OMDBapi.</p>
     </footer>
   );
 };

@@ -36,7 +36,7 @@ const Nav = ({ setSearchData, setLoading }) => {
 
   useEffect(() => {
     //will load Marvel movies on mount by passing Marvel through fetchMovies
-    fetchMovies("Marvel");
+    fetchMovies("Avengers");
   }, []);
 
   return (
@@ -44,7 +44,7 @@ const Nav = ({ setSearchData, setLoading }) => {
       <div className="logo">
         <img src={logo} alt="" className="logo__img" />
         <div className="logo__title">
-          <span>FES</span> Movies
+          <span>Simplified</span> Flix
         </div>
       </div>
 
