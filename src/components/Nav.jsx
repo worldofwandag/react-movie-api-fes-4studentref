@@ -30,7 +30,7 @@ const Nav = ({ setSearchData, setLoading }) => {
       query: query,
     });
     
-    // Simulate 1 second delay to show skeleton loading state
+    // Simulate 0.5 second delay to show skeleton loading state
     setTimeout(() => {
       setLoading(false);
     }, 500);

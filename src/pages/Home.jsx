@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import MovieCard from "../components/ui/MovieCard";
 
 const Home = () => {
   const { searchData, loading } = useOutletContext();
   const [sortOption, setSortOption] = useState("default");
-  const [sortedMovies, setSortedMovies] = useState([]);
 
   function sortMovies(movies, option) {
     const sorted = [...movies];
 
     if (option === "oldest") {
-      sorted.sort((a, b) => a.Year - b.Year);
+      sorted.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
     } else if (option === "newest") {
-      sorted.sort((a, b) => b.Year - a.Year);
+      sorted.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
     } else if (option === "a-z") {
       sorted.sort((a, b) => a.Title.localeCompare(b.Title));
     } else if (option === "z-a") {
@@ -23,12 +22,7 @@ const Home = () => {
     return sorted;
   }
 
-  useEffect(() => {
-    const currentMovies = sortMovies(searchData.results, sortOption);
-    setSortedMovies(currentMovies);
-  }, [searchData.results, sortOption]);
-  //putting sortOption in the dependency array will make it run everytime you choose a new sorting option.
-  //searchData.results in the dependancy array will make it run everytime you search for new movies.
+  const sortedMovies = sortMovies(searchData.results, sortOption);
 
   return (
     <div className="main">
