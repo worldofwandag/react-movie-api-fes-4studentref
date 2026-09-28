@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import MovieCard from "../components/ui/MovieCard";
 
-const Home = ({ searchData, loading }) => {
+const Home = () => {
+  const { searchData, loading } = useOutletContext();
   const [sortOption, setSortOption] = useState("default");
   const [sortedMovies, setSortedMovies] = useState([]);
 
