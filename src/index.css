@@ -170,6 +170,7 @@ a {
   align-items: center;
   max-width: 1200px;
   margin: -20px auto 20px;
+  padding: 12px 0;
 }
 
 #sortSelect {
@@ -187,7 +188,7 @@ a {
   gap: 20px;
   max-width: 1200px;
   justify-content: center;
-  margin: 0 auto;
+  margin: -20px auto;
 }
 
 .movie-card {
