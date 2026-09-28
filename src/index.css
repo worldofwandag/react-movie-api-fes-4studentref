@@ -187,7 +187,7 @@ a {
   gap: 20px;
   max-width: 1200px;
   justify-content: center;
-  margin: -20px auto;
+  margin: 0 auto;
 }
 
 .movie-card {

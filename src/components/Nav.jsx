@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/fes-logo.png";
@@ -8,9 +8,11 @@ const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 const Nav = ({ setSearchData, setLoading }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchTerm, setSearchTerm] = useState("");
 
   async function handleSubmit(formData) {
     const query = formData.get("searchInput");
+    setSearchTerm(query); // remember it so the reset restores it
     fetchMovies(query);
     if (location.pathname !== "/") { //this is for when doing a search from somewhere other than the homepage
       navigate("/");
@@ -35,7 +37,7 @@ const Nav = ({ setSearchData, setLoading }) => {
   }
 
   useEffect(() => {
-    //will load Marvel movies on mount by passing Marvel through fetchMovies
+    //will load Marvel movies on mount by passing Avengers through fetchMovies
     fetchMovies("Avengers");
   }, []);
 
@@ -62,6 +64,7 @@ const Nav = ({ setSearchData, setLoading }) => {
             name="searchInput" //for formData
             id="searchInput"
             placeholder="Search movies..."
+            defaultValue={searchTerm}
             required
           />
           <button
